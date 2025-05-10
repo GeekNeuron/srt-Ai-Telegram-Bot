@@ -55,4 +55,4 @@ Telegram-Sub-Translate-Ai/
 ```
 
 ## License
-MIT License © 2025 Docishoon
+MIT License © 2025 GeekNeuron
