@@ -17,8 +17,8 @@ A fully async, AI-powered Telegram bot that translates `.srt` subtitle files usi
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/Telegram-Sub-Translate-Ai
-cd Telegram-Sub-Translate-Ai
+git clone https://github.com/GeekNeuron/srt-Ai-Telegram-Bot
+cd srt-Ai-Telegram-Bot
 ```
 
 ### 2. Install dependencies
