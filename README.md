@@ -1,58 +1,83 @@
-# Telegram Subtitle Translator Bot
+# 🎬 srt-Ai-Telegram-Bot
 
-A fully async, AI-powered Telegram bot that translates `.srt` subtitle files using Gemini API. Built with performance, security, and scalability in mind.
+A fully asynchronous Telegram bot that translates `.srt` subtitle files using the Gemini AI API. Designed with performance, security, and scalability in mind.
 
-## Features
+## ✨ Features
 
-- Upload `.srt` files via Telegram and receive fully translated subtitles
-- Powered by Gemini AI for fast and intelligent translation
-- Asynchronous architecture using `aiogram`
-- Auto validation for subtitle file structure and input size
-- Error logging with `loguru`
-- Configurable via `.env` file with secure variable loading via `pydantic`
-- In-memory translation cache to avoid redundant API calls and reduce cost
-- Modular, clean codebase for future extensibility
+- Upload `.srt` files via Telegram and receive translated subtitles.
+- Powered by Gemini AI for intelligent and context-aware translations.
+- Asynchronous architecture using `aiogram`.
+- Automatic validation for subtitle file structure and input size.
+- Error logging with `loguru`.
+- Configurable via `.env` file with secure variable loading using `pydantic`.
+- In-memory translation cache to avoid redundant API calls and reduce costs.
+- Modular, clean codebase for future enhancements.
 
-## Getting Started
+## 🚀 Getting Started
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/GeekNeuron/srt-Ai-Telegram-Bot
-cd srt-Ai-Telegram-Bot
+### Prerequisites
+
+- Python 3.8 or higher
+- Telegram Bot Token
+- Gemini AI API Key
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/GeekNeuron/srt-Ai-Telegram-Bot.git
+   cd srt-Ai-Telegram-Bot
+   ```
+
+2. Create and activate a virtual environment:
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install the required packages:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Create a `.env` file in the root directory and add the following variables:
+
+   ```env
+   BOT_TOKEN=your_telegram_bot_token
+   GEMINI_API_KEY=your_gemini_api_key
+   ```
+
+5. Run the bot:
+
+   ```bash
+   python bot.py
+   ```
+
+## 🛠 Usage
+
+1. Start the bot on Telegram.
+2. Send a `.srt` subtitle file to the bot.
+3. Receive the translated subtitle file in response.
+
+## 📁 Project Structure
+
 ```
-
-### 2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Create your `.env` file
-```env
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-GEMINI_API_KEY=your_gemini_api_key
-MANAGER_ID=your_numeric_telegram_id
-BOT_USERNAME=your_bot_username
-```
-
-### 4. Run the bot
-```bash
-python bot.py
-```
-
-## File Structure
-```
-Telegram-Sub-Translate-Ai/
+srt-Ai-Telegram-Bot/
+├── bot/
+│   └── handlers.py
+├── core/
+│   ├── translator.py
+│   └── utils.py
+├── .env.example
 ├── bot.py
 ├── config.py
 ├── requirements.txt
-├── README.md
-├── .env
-├── core/
-│   └── translate.py
-├── utils/
-│   └── logger.py (optional)
-├── temp/
+└── README.md
 ```
 
-## License
-MIT License © 2025 GeekNeuron
+## 📄 License
+
+This project is licensed under the MIT License.
