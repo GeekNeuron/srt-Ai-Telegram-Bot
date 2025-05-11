@@ -1,83 +1,121 @@
-# 🎬 srt-Ai-Telegram-Bot
+# 🚀 AI-Powered Telegram Subtitle Translator Bot
 
-A fully asynchronous Telegram bot that translates `.srt` subtitle files using the Gemini AI API. Designed with performance, security, and scalability in mind.
+This project is a production-ready, scalable, and secure Telegram bot built to translate `.srt` subtitle files using Gemini AI. Designed with microservices architecture and full support for asynchronous tasks, caching, monitoring, and more.
+
+---
 
 ## ✨ Features
 
-- Upload `.srt` files via Telegram and receive translated subtitles.
-- Powered by Gemini AI for intelligent and context-aware translations.
-- Asynchronous architecture using `aiogram`.
-- Automatic validation for subtitle file structure and input size.
-- Error logging with `loguru`.
-- Configurable via `.env` file with secure variable loading using `pydantic`.
-- In-memory translation cache to avoid redundant API calls and reduce costs.
-- Modular, clean codebase for future enhancements.
+- Translate `.srt` subtitle files using Gemini AI API.
+- Async architecture with `aiogram` and `aiohttp`.
+- Redis caching to reduce repeated API calls.
+- Task queue system powered by `Celery`.
+- SQLite/PostgreSQL database for persistent user storage.
+- Monitoring support with Prometheus and Grafana.
+- Linted, formatted, and fully documented codebase.
+- Automated unit testing using `pytest`.
 
-## 🚀 Getting Started
+---
 
-### Prerequisites
+## 🧰 Requirements
 
-- Python 3.8 or higher
-- Telegram Bot Token
-- Gemini AI API Key
+- Python >= 3.8
+- Redis
+- Celery
+- Docker & Docker Compose (optional for full setup)
 
-### Installation
+---
 
-1. Clone the repository:
+## 🛠 Setup & Run
 
-   ```bash
-   git clone https://github.com/GeekNeuron/srt-Ai-Telegram-Bot.git
-   cd srt-Ai-Telegram-Bot
-   ```
+### 1. Clone the repository
+```bash
+git clone https://github.com/YourUsername/srt-Ai-Telegram-Bot.git
+cd srt-Ai-Telegram-Bot
+```
 
-2. Create and activate a virtual environment:
+### 2. Create virtual environment & install dependencies
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+### 3. Create `.env` file
+```env
+BOT_TOKEN=your_telegram_bot_token
+GEMINI_API_KEY=your_gemini_api_key
+REDIS_URL=redis://localhost:6379
+```
 
-3. Install the required packages:
+### 4. Initialize database
+```bash
+python create_db.py
+```
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 5. Run services
 
-4. Create a `.env` file in the root directory and add the following variables:
+**Worker:**
+```bash
+celery -A worker.celery_app worker --loglevel=info
+```
 
-   ```env
-   BOT_TOKEN=your_telegram_bot_token
-   GEMINI_API_KEY=your_gemini_api_key
-   ```
+**Bot:**
+```bash
+python bot.py
+```
 
-5. Run the bot:
+**Prometheus Metrics (Optional):**
+Runs on port `8000`.
 
-   ```bash
-   python bot.py
-   ```
+---
 
-## 🛠 Usage
+## 🧪 Testing
 
-1. Start the bot on Telegram.
-2. Send a `.srt` subtitle file to the bot.
-3. Receive the translated subtitle file in response.
+Run tests:
+```bash
+pytest tests/
+```
+
+Lint and format:
+```bash
+flake8 .
+black .
+```
+
+---
+
+## 🐳 Docker Support
+
+To run all services via Docker:
+```bash
+docker-compose up --build
+```
+
+---
+
+## 📈 Monitoring
+
+- Prometheus: http://localhost:9090
+- Grafana: http://localhost:3000 (default login: admin/admin)
+
+---
 
 ## 📁 Project Structure
-
 ```
-srt-Ai-Telegram-Bot/
-├── bot/
-│   └── handlers.py
-├── core/
-│   ├── translator.py
-│   └── utils.py
-├── .env.example
-├── bot.py
-├── config.py
-├── requirements.txt
-└── README.md
+├── bot_service/         # Telegram interaction logic
+├── core/                # Translation, utils, DB, tasks
+├── tests/               # Unit tests with pytest
+├── db.py                # SQLAlchemy async DB setup
+├── worker.py            # Celery app instance
+├── create_db.py         # Script to initialize tables
+├── requirements.txt     # Python dependencies
+├── docker-compose.yml   # Multi-service container config
+└── .env.example         # Env var sample
 ```
 
-## 📄 License
+---
 
-This project is licensed under the MIT License.
+## 📜 License
+
+MIT License © 2024 GeekNeuron
