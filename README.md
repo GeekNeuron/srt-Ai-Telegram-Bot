@@ -30,7 +30,7 @@ This project is a production-ready, scalable, and secure Telegram bot built to t
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YourUsername/srt-Ai-Telegram-Bot.git
+git clone https://github.com/GeekNeuron/srt-Ai-Telegram-Bot.git
 cd srt-Ai-Telegram-Bot
 ```
 
